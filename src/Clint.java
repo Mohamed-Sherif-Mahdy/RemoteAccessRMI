@@ -15,8 +15,8 @@ public class Clint {
          // Calling the remote method using the obtained object 
          stub.printMsg();
          
-         String longestWord=stub.findLongestWord(stub.processFile("file.txt"));
-         String shortestWord=stub.findShortestWord(stub.processFile("file.txt"));
+         String longestWord=stub.findLongestWord(stub.processFile("..\\file.txt"));
+         String shortestWord=stub.findShortestWord(stub.processFile("..\\file.txt"));
          System.out.println("Longest word: " + longestWord);
          System.out.println("Shortest word: " + shortestWord);
          // System.out.println("Remote method invoked"); 
