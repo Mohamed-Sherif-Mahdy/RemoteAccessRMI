@@ -1,17 +1,14 @@
-// Implementing the remote interface 
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Word implements IWord {  
-   
-    // Implementing the interface method 
-    public void printMsg() {  
-       System.out.println("This is an example RMI program");  
-    }
+public class Word extends UnicastRemoteObject implements IWord {  
+ public Word() throws Exception{
+    super();
+ }
     public List<String> processFile(String filename) throws RemoteException {
         List<String> words = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
@@ -28,23 +25,23 @@ public class Word implements IWord {
         return words;
     }
 
-    public String findLongestWord(List<String> words) throws RemoteException {
-        String longestWord = "";
+    public int findLongestWord(List<String> words) throws RemoteException {
+        int LeangthLongestWord = 0;
         for (String word : words) {
-            if (word.length() > longestWord.length()) {
-                longestWord = word;
+            if (word.length() > LeangthLongestWord) {
+                LeangthLongestWord = word.length();
             }
         }
-        return longestWord;
+        return LeangthLongestWord;
     }
 
-    public String findShortestWord(List<String> words) throws RemoteException {
-        String shortestWord = words.get(0);
+    public int findShortestWord(List<String> words) throws RemoteException {
+        int LenghtShortestWord = Integer.MAX_VALUE; 
         for (String word : words) {
-            if (word.length() < shortestWord.length()) {
-                shortestWord = word;
+            if (word.length() < LenghtShortestWord && word.length()>0) {
+                LenghtShortestWord = word.length();
             }
         }
-        return shortestWord;
+        return LenghtShortestWord;
     }  
  } 
