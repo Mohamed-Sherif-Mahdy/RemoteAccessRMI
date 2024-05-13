@@ -11,17 +11,19 @@ public class Word extends UnicastRemoteObject implements IWord {
  }
     public List<String> processFile(String filename) throws RemoteException {
         List<String> words = new ArrayList<>();
+        String regexPattern = "[^a-zA-Z]";
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] lineWords = line.split("\\s+");
                 for (String word : lineWords) {
-                    words.add(word);
+                    words.add(word.replaceAll(regexPattern, ""));
                 }
             }
         } catch (Exception e) {
             throw new RemoteException("Error processing file: " + e.getMessage());
         }
+       
         return words;
     }
 
