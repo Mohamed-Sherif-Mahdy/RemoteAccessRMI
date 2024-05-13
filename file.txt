@@ -1,5 +1,5 @@
-Welcome............ to the VS Code Java world !
-Here is guideline to help you get started to write Java code in Visual Studio Code
+Welcome............  the VS Code Java world !
+Here guideline  help you get started
 
 Folder Structure
 

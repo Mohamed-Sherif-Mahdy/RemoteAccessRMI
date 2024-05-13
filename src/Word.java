@@ -27,23 +27,23 @@ public class Word extends UnicastRemoteObject implements IWord {
         return words;
     }
 
-    public int findLongestWord(List<String> words) throws RemoteException {
-        int LeangthLongestWord = 0;
+    public String findLongestWord(List<String> words) throws RemoteException {
+        String longestWord = "";
         for (String word : words) {
-            if (word.length() > LeangthLongestWord) {
-                LeangthLongestWord = word.length();
+            if (word.length() > longestWord.length()) {
+                longestWord = word;
             }
         }
-        return LeangthLongestWord;
+        return longestWord;
     }
 
-    public int findShortestWord(List<String> words) throws RemoteException {
-        int LenghtShortestWord = Integer.MAX_VALUE; 
+    public String findShortestWord(List<String> words) throws RemoteException {
+        String shortestWord = words.get(0);
         for (String word : words) {
-            if (word.length() < LenghtShortestWord && word.length()>0) {
-                LenghtShortestWord = word.length();
+            if (word.length() < shortestWord.length() && word.length() > 0){
+                shortestWord = word;
             }
         }
-        return LenghtShortestWord;
-    }  
+        return shortestWord;
+    }   
  } 
